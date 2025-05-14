@@ -1,6 +1,5 @@
 {
-  "name": "Network Connections Card",
+  "name": "Cytoscape Card",
   "content_in_root": true,
-  "filename": "ha_network-connections-card.js"
+  "filename": "ha_cytoscape-card.js"
 }
-  
