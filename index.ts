@@ -111,11 +111,23 @@ class CytoscapeCard extends LitElement {
       elements = JSON.parse(stateObj.attributes.elements);
     } catch {}
 
+    let style = this._config?.style;
+    if (style && this.parentElement) {
+      const regex = /var\(--(.*?)\)/g;
+      const computedStyle = window.getComputedStyle(this.parentElement);
+      style = JSON.parse(
+        JSON.stringify(style).replace(regex, (match, name) => {
+          const value = computedStyle.getPropertyValue(`--${name}`);
+          return value ? value : match;
+        })
+      );
+    }
+
     return html`
       <ha-card>
         <cytoscape-dagre
           .elements=${elements}
-          .options=${{ style: this._config?.style }}
+          .options=${{ style }}
           .options=${{
             autoungrabify: false,
           }}></cytoscape-dagre>

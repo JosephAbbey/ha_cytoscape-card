@@ -5,5 +5,9 @@
   },
   "devDependencies": {
     "prettier": "^3.5.3"
+  },
+  "scripts": {
+    "build": "bun build index.ts --outfile=ha_cytoscape-card.js --sourcemap=inline --minify",
+    "dev-deploy": "cp .\\ha_cytoscape-card.js H:\\www\\ha_cytoscape-card\\ha_cytoscape-card.js"
   }
 }
